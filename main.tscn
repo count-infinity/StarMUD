@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://duqx7jlfamr4"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_iv8ay"]
+[ext_resource type="PackedScene" uid="uid://cx5t6pgthm7lx" path="res://player.tscn" id="2_ds4wk"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("player_container")]
+script = ExtResource("1_iv8ay")
+player_scene = ExtResource("2_ds4wk")
+player_container = NodePath("players")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1148.0
+offset_bottom = 646.0
+color = Color(0.379038, 0.747973, 0.579858, 1)
+
+[node name="players" type="Node2D" parent="."]
+position = Vector2(498, 135)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("../players")
+spawn_limit = 2
+
+[node name="SpawnLocations" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="SpawnLocations" groups=["SpawnLocation"]]
+position = Vector2(703, 274)
+
+[node name="1" type="Node2D" parent="SpawnLocations" groups=["SpawnLocation"]]
+position = Vector2(299, 280)
