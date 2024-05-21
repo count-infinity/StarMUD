@@ -18,9 +18,10 @@ func _ready():
     
 func add_player(id, idx):
     var player_instance: CharacterBody2D = player_scene.instantiate()
-    player_instance.name = str(id)    
-    player_instance.global_position = get_spawn_point(idx)
-    player_container.add_child(player_instance)    
+    player_instance.name = str(id)                
+    var init_position = get_spawn_point(idx)
+    player_container.add_child(player_instance)
+    player_instance.update_position.rpc_id(id, init_position)
     print("Adding child "+str(id)+" at "+str(player_instance.global_position))
     
 func get_spawn_point(idx):
